@@ -17,14 +17,23 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             minifyEnabled false
         }
+        debug {
+            debuggable true
+            testCoverageEnabled false
+        }
+        qa {
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            minifyEnabled false
+        }
+        staging {
+            matchingFallbacks = ["release", "qa", "debug"]
+        }
     }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 }
-
-
 
 
 signing {
@@ -41,7 +50,7 @@ uploadArchives {
         beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
 
         repository(url: sonatypeRepo) {
-            authentication(userName: sonatypeUsername, password: sonatypePassword )
+            authentication(userName: sonatypeUsername, password: sonatypePassword)
         }
 
         snapshotRepository(url: snapshotRepo) {
