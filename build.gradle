@@ -7,7 +7,7 @@ buildscript {
     }
     dependencies {
         // раскоментить, чтобы заработал сэмпл
-        // classpath 'com.android.tools.build:gradle:1.2.3'
+        // classpath 'com.android.tools.build:gradle:3.5.0'
     }
 }
 
