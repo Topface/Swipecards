@@ -21,8 +21,7 @@ allprojects {
 }
 
 android {
-    buildToolsVersion '28.0.3'
-    compileSdkVersion 27
+    compileSdkVersion 30
 
     buildTypes {
         release {}
