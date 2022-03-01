@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewParent;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.OvershootInterpolator;
 
@@ -116,7 +117,10 @@ public class FlingCardListener implements View.OnTouchListener {
                 case MotionEvent.ACTION_UP:
                     mActivePointerId = INVALID_POINTER_ID;
                     resetCardViewOnStack();
-                    view.getParent().requestDisallowInterceptTouchEvent(false);
+                    ViewParent parentView = view.getParent();
+                    if (parentView != null){
+                        parentView.requestDisallowInterceptTouchEvent(false);
+                    }
                     break;
 
                 case MotionEvent.ACTION_POINTER_DOWN:
