@@ -26,6 +26,8 @@ public class SwipeFlingAdapterView extends BaseFlingAdapterView {
     private int MIN_ADAPTER_STACK = 6;
     private float ROTATION_DEGREES = 15.f;
 
+    private boolean IS_VERTICAL_MOVE_POSSIBLE = true;
+
     private Adapter mAdapter;
     private int LAST_OBJECT_IN_STACK = 0;
     private onFlingListener mFlingListener;
@@ -52,6 +54,7 @@ public class SwipeFlingAdapterView extends BaseFlingAdapterView {
         MAX_VISIBLE = a.getInt(R.styleable.SwipeFlingAdapterView_max_visible, MAX_VISIBLE);
         MIN_ADAPTER_STACK = a.getInt(R.styleable.SwipeFlingAdapterView_min_adapter_stack, MIN_ADAPTER_STACK);
         ROTATION_DEGREES = a.getFloat(R.styleable.SwipeFlingAdapterView_rotation_degrees, ROTATION_DEGREES);
+        IS_VERTICAL_MOVE_POSSIBLE = a.getBoolean(R.styleable.SwipeFlingAdapterView_is_vertical_move_possible, IS_VERTICAL_MOVE_POSSIBLE);
         a.recycle();
     }
 
@@ -213,7 +216,7 @@ public class SwipeFlingAdapterView extends BaseFlingAdapterView {
             if (mActiveCard != null) {
 
                 flingCardListener = new FlingCardListener(mActiveCard, mAdapter.getItem(0),
-                        ROTATION_DEGREES, new FlingCardListener.FlingListener() {
+                        ROTATION_DEGREES, IS_VERTICAL_MOVE_POSSIBLE, new FlingCardListener.FlingListener() {
 
                     @Override
                     public void onCardExited() {

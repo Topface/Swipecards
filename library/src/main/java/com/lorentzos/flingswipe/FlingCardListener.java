@@ -34,6 +34,8 @@ public class FlingCardListener implements View.OnTouchListener {
     private final float halfWidth;
     private float BASE_ROTATION_DEGREES;
 
+    private boolean IS_VERTICAL_MOVE_POSSIBLE = true;
+
     private float aPosX;
     private float aPosY;
     private float aDownTouchX;
@@ -53,11 +55,12 @@ public class FlingCardListener implements View.OnTouchListener {
 
 
     public FlingCardListener(View frame, Object itemAtPosition, FlingListener flingListener) {
-        this(frame, itemAtPosition, 15f, flingListener);
+        this(frame, itemAtPosition, 15f, true, flingListener);
     }
 
-    public FlingCardListener(View frame, Object itemAtPosition, float rotation_degrees, FlingListener flingListener) {
+    public FlingCardListener(View frame, Object itemAtPosition, float rotation_degrees, boolean isVerticalMovePossible, FlingListener flingListener) {
         super();
+        this.IS_VERTICAL_MOVE_POSSIBLE = isVerticalMovePossible;
         this.frame = frame;
         this.objectX = frame.getX();
         this.objectY = frame.getY();
@@ -118,7 +121,7 @@ public class FlingCardListener implements View.OnTouchListener {
                     mActivePointerId = INVALID_POINTER_ID;
                     resetCardViewOnStack();
                     ViewParent parentView = view.getParent();
-                    if (parentView != null){
+                    if (parentView != null) {
                         parentView.requestDisallowInterceptTouchEvent(false);
                     }
                     break;
@@ -164,7 +167,9 @@ public class FlingCardListener implements View.OnTouchListener {
 
                     //in this area would be code for doing something with the view as the frame moves.
                     frame.setX(aPosX);
-                    frame.setY(aPosY);
+                    if (IS_VERTICAL_MOVE_POSSIBLE) {
+                        frame.setY(aPosY);
+                    }
                     frame.setRotation(rotation);
                     mFlingListener.onScroll(getScrollProgressPercent());
                     break;

@@ -6,6 +6,7 @@
         <attr name="rotation_degrees" format="float"/>
         <attr name="min_adapter_stack" format="integer"/>
         <attr name="max_visible" format="integer"/>
+        <attr name="is_vertical_move_possible" format="boolean"/>
     </declare-styleable>
 
 </resources>

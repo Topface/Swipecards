@@ -5,6 +5,7 @@
         <item name="rotation_degrees">15</item>
         <item name="min_adapter_stack">6</item>
         <item name="max_visible">4</item>
+        <item name="is_vertical_move_possible">true</item>
     </style>
 
 </resources>
