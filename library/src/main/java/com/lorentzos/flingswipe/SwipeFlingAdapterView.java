@@ -116,15 +116,19 @@ public class SwipeFlingAdapterView extends BaseFlingAdapterView {
                 }
             } else {
                 // Reset the UI and set top view listener
-                removeAllViewsInLayout();
-                layoutChildren(0, adapterCount);
-                setTopView();
+                resetAllViews();
             }
         }
 
         mInLayout = false;
 
         if (adapterCount <= MIN_ADAPTER_STACK) mFlingListener.onAdapterAboutToEmpty(adapterCount);
+    }
+
+    public void resetAllViews(){
+        removeAllViewsInLayout();
+        layoutChildren(0, mAdapter.getCount());
+        setTopView();
     }
 
 
