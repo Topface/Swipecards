@@ -1,14 +1,10 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion Integer.parseInt(project.TARGET_SDK_VERSION)
-    buildToolsVersion '30.0.3'
-
+    compileSdk Integer.parseInt(project.TARGET_SDK_VERSION)
     defaultConfig {
         minSdkVersion MIN_SDK_VERSION
         targetSdkVersion project.TARGET_SDK_VERSION
-        versionCode Integer.parseInt(project.VERSION_CODE)
-        versionName project.VERSION_NAME
     }
     buildTypes {
         release {
@@ -20,6 +16,7 @@ android {
             minifyEnabled false
         }
     }
+    namespace 'com.lorentzos.flingswipe'
 }
 
 dependencies {
