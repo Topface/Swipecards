@@ -3,11 +3,11 @@
 
 buildscript {
     repositories {
-        jcenter()
+        mavenCentral()
         google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.2.1'
+        classpath "com.android.tools.build:gradle:$build_gradle"
     }
 }
 
@@ -16,14 +16,15 @@ allprojects {
     group = GROUP
 
     repositories {
-        jcenter()
+        mavenCentral()
         google()
     }
 }
 
 android {
+    namespace = "com.lorentzos.flingswipe"
     buildToolsVersion '30.0.3'
-    compileSdkVersion 34
+    compileSdkVersion 36
 
     buildTypes {
         release {}
